@@ -3,11 +3,11 @@ import streamlit as st
 from utils import load_chain
 
 # Custom image for the app icon and the assistant's avatar
-company_logo = 'https://www.app.nl/wp-content/uploads/2019/01/Blendle.png'
+company_logo = 'logo.png'
 
 # Configure Streamlit page
 st.set_page_config(
-    page_title="Your Notion Chatbot",
+    page_title="Your AI Second Brain",
     page_icon=company_logo
 )
 
@@ -18,7 +18,7 @@ chain = load_chain()
 if 'messages' not in st.session_state:
     # Start with first message from assistant
     st.session_state['messages'] = [{"role": "assistant", 
-                                  "content": "Hi human! I am xLancer AI. How can I help you today?"}]
+                                  "content": "Hi! What would you like to know about AI Clones?"}]
 
 # Display chat messages from history on app rerun
 # Custom avatar for the assistant, default avatar for user
@@ -31,7 +31,7 @@ for message in st.session_state.messages:
             st.markdown(message["content"])
 
 # Chat logic
-if query := st.chat_input("Ask me anything"):
+if query := st.chat_input("Ask me about AI Clones"):
     # Add user message to chat history
     st.session_state.messages.append({"role": "user", "content": query})
     # Display user message in chat message container
